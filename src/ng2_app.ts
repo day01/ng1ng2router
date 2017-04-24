@@ -3,19 +3,17 @@
  */
 
 // import angular2
-import {NgModule, Component} from '@angular/core';
-import {RouterModule, UrlHandlingStrategy} from '@angular/router';
-import {BrowserModule} from '@angular/platform-browser';
-import {UpgradeModule} from '@angular/upgrade/static';
-import {RouterUpgradeInitializer} from '@angular/router/upgrade';
+import {NgModule, Component} from "@angular/core";
+import {RouterModule, UrlHandlingStrategy} from "@angular/router";
+import {BrowserModule} from "@angular/platform-browser";
+import {UpgradeModule} from "@angular/upgrade/static";
 
 // import app modules
-import {MessagesNgModule} from './messages';
-import {MenuNgModule} from './menu';
-import {SettingsNgModule} from './settings';
+import {SettingsNgModule} from "./settings";
+import { MenuNgModule } from "ng1module/src/menu";
 
-// This URL handling strategy is custom and application-specific.
-// Using it we can tell the Angular 2 router to handle only URL starting with settings.
+// this URL handling strategy is custom and application-specific.
+// using it we can tell the Angular 2 router to handle only URL starting with settings.
 export class Ng1Ng2UrlHandlingStrategy implements UrlHandlingStrategy {
   shouldProcessUrl(url) { return url.toString().startsWith("/settings"); }
   extract(url) { return url; }
@@ -23,7 +21,7 @@ export class Ng1Ng2UrlHandlingStrategy implements UrlHandlingStrategy {
 }
 
 @Component({
-  selector: 'root-cmp',
+  selector: "root-cmp",
   template: `
     <router-outlet></router-outlet>
     <div class="ng-view"></div>
@@ -38,11 +36,10 @@ export class RootCmp {}
 
     // import all modules
     MenuNgModule,
-    MessagesNgModule,
     SettingsNgModule,
 
-    // We don't need to provide any routes.
-    // The router will collect all routes from all the registered modules.
+    // we don't need to provide any routes.
+    // the router will collect all routes from all the registered modules.
     RouterModule.forRoot([])
   ],
   providers: [

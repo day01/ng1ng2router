@@ -1,7 +1,7 @@
-import {Component} from '@angular/core';
+import {Component} from "@angular/core";
 
 @Component({
-  selector: 'settings',
+  selector: "settings",
   template: `
     <h1>Settings</h1>
     <a routerLink="pagesize">Page Size Settings</a>
